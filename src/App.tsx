@@ -8,7 +8,7 @@ export default function App() {
         <div className="space-y-10">
           <h1 className="text-white text-5xl">DoneNow</h1>
           <button className="flex flex-row bg-white rounded-full p-4 items-center">
-            <AiOutlinePlus classname="flex flex-row items-center"/> 
+            <AiOutlinePlus className="flex flex-row items-center"/> 
             Create task
           </button>
         </div>
