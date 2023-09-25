@@ -1,9 +1,11 @@
 import Task from "./components/Task.tsx";
 import { AiOutlinePlus } from "react-icons/ai";
 
+
 export default function App() {
   return (
-    <div className="bg-custom font-Lexend h-screen w-screem">
+    
+    <div className="font-Lexend bg-custom h-screen w-screem">
       <div className="flex flex-row justify-between flex-wrap items-center p-10 font-bold">
         <div className="space-y-10">
           <h1 className="text-white text-5xl">DoneNow</h1>
