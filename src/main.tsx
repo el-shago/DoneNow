@@ -7,7 +7,7 @@ import AccountMenu from './pages/AccountMenu.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <AccountMenu className />
+    <AccountMenu />
     <App />
   </React.StrictMode>,
 )
