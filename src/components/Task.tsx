@@ -19,7 +19,8 @@ export function Task() {
       onMouseLeave={() => setShowComponent(completed)}
       onClick={handleComplete}
     >
-      <div className="flex justify-between ">
+      
+      <div className="flex justify-between">
         <div className="flex flex-col m-5">
           <div className={`flex flex-row font-bold text-white ${completed ? "opacity-0" : showComponent ? "opacity-0" : ""}`}>
             Hacer tarea
