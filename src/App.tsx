@@ -2,6 +2,7 @@ import { useState } from "react";
 import Task from "./components/Task.tsx";
 import { AiOutlinePlus } from "react-icons/ai";
 
+
 export default function App() {
   const [tasks, setTasks] = useState<React.ReactNode[]>([]);
 

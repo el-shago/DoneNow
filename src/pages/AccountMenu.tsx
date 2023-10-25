@@ -11,7 +11,7 @@ export function AccountMenu() {
   }, []);
 
   return (
-    <div className="justify-center font-Lexend relative h-screen flex w-screen items-center bg-gradient-to-b from-green-400 to-black">
+    <div className="justify-center font-Lexend relative h-screen flex items-center bg-gradient-to-b from-green-400 to-black">
       
         <div className="">
           <h2 className="text-white text-4xl mb-8 font-semibold text-center">
