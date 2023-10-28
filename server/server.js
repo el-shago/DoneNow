@@ -26,11 +26,14 @@ const getTasks = app.get("/", async (req, res) => {
 });
 
 const createTask = app.post("/create/task", async (req, res) => {
+    const body = req.body;
+    console.log(req.body);
   try {
-    const { data, error } = await supabase
+    const { tasks, error } = await supabase
       .from("tasks")
-      .insert([{ title: "task_title", description: "task_desctiption", due_date : "task_due_date" }])
+      .insert([{ userid: body.userid, title: body.title, description: body.description, due_date : new Date(body.due_date) }])
       .select();
+      
 
     if (error) {
       console.error(error);
