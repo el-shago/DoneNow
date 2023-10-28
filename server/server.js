@@ -50,6 +50,3 @@ const createTask = app.post("/create/task", async (req, res) => {
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
-
-// Ahora puedes usar apiKey en tu lógica del servidor
-// Ejemplo:
