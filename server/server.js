@@ -25,6 +25,7 @@ const getTasks = app.get("/", async (req, res) => {
   }
 });
 
+//Create tasks
 const createTask = app.post("/create/task", async (req, res) => {
     const body = req.body;
     console.log(req.body);
@@ -47,6 +48,7 @@ const createTask = app.post("/create/task", async (req, res) => {
   }
 });
 
+//Delete tasks
 const deleteTask = app.delete("/delete/task/:id", async (req, res) => {
   try{
     const { tasks, error } = await supabase .from("tasks").delete().match({ task_id: req.params.id });
@@ -60,6 +62,8 @@ const deleteTask = app.delete("/delete/task/:id", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+
+
 
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log("Your app is listening on port " + listener.address().port);
