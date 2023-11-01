@@ -1,5 +1,5 @@
 import express from "express";
-import dotenv from "dotenv"; // Asegúrate de ajustar la ruta adecuada al archivo .env de Vite
+import dotenv from "dotenv";
 import { supabase } from "./supabaseClient.js";
 
 dotenv.config();
