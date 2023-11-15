@@ -1,14 +1,28 @@
-import { useState } from "react";
-import Task from "./components/Task.tsx";
+import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import Task from "./components/Task.tsx";
 
-
+export interface ITask {
+  task_id: number;
+  title: string;
+  description: string;
+  due_date: string;
+}
 export default function App() {
-  const [tasks, setTasks] = useState<React.ReactNode[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
   
+  useEffect(() => {
+    fetchTasks();
+  }, [])
 
-  const handleCreateTask = () => {
-    setTasks([...tasks, <Task />]);
+  const fetchTasks = async () => {
+    const response = await fetch("http://localhost:3000");
+    const data = await response.json();
+    setTasks(data.tasks);
+  }
+
+ const handleCreateTask = () => {
+  //  setTasks([...tasks, <Task />]);
   };
 
   return (
@@ -28,7 +42,14 @@ export default function App() {
       </div>
 
       <div className="flex-grow flex-row rounded-2xl bg-[#454545] m-4 md:m-8 space-y-4 md:space-y-6 p-2 md:p-5 h-[600px] overflow-y-auto">
-        {tasks}
+        {tasks.map((task) => (
+          <Task 
+          key={task.task_id}
+          //title ={task.title}
+          //description = {task.description}
+          //due_date = {task.due_date}/>
+          />
+        ))}
       </div>
     </div>
   );
