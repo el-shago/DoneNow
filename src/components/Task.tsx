@@ -1,15 +1,21 @@
 import { useState } from "react";
 import { BsCheckCircle } from "react-icons/bs";
+import { ITask } from "../App";
 
+interface TaskProps {
+  title: string;
+  description: string;
+  due_date: string;
+}
 
-export function Task() {
+const Task: React.FC<TaskProps> = ({ title, description, due_date }) => {
   const [showComponent, setShowComponent] = useState(false);
   const [completed, setCompleted] = useState(false);
 
   const handleComplete = () => {
     setCompleted(!completed);
   };
-
+  const formattedDueDate = new Date(due_date).toLocaleDateString();
   return (
     <div
       className={`m-8 rounded-lg font-Lexend transition-all duration-300 relative ${
@@ -19,18 +25,17 @@ export function Task() {
       onMouseLeave={() => setShowComponent(completed)}
       onClick={handleComplete}
     >
-      
       <div className="flex justify-between">
         <div className="flex flex-col m-5">
           <div className={`flex flex-row font-bold text-white ${completed ? "opacity-0" : showComponent ? "opacity-0" : ""}`}>
-            Hacer tarea
+            {title}
           </div>
           <div className={`flex flex-row text-white ${completed ? "opacity-0" : showComponent ? "opacity-0" : ""}`}>
-            hacerla ahora pq ...
+            {description}
           </div>
         </div>
         <div className={`flex flex-col justify-center m-3 font-bold text-white ${completed ? "opacity-0" : showComponent ? "opacity-0" : ""}`}>
-          Due date: fecha
+          Due date: {formattedDueDate}
         </div>
       </div>
 
@@ -41,6 +46,6 @@ export function Task() {
       )}
     </div>
   );
-}
+};
 
 export default Task;
