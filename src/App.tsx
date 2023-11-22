@@ -44,7 +44,7 @@ export default function App() {
       <div className="flex-grow flex-row rounded-2xl bg-[#454545] m-4 md:m-8 space-y-4 md:space-y-6 p-2 md:p-5 h-[600px] overflow-y-auto">
         {tasks.map((task) => (
           <Task
-          key={task.task_id}
+          task_id = {task.task_id}
           title ={task.title}
           description = {task.description}
           due_date = {task.due_date}

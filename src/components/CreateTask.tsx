@@ -1,6 +1,6 @@
 export default function CreateTask(){
     return(
-        <div className="h-screen flex justify-center items-center absolute">
+        <div className="h-screen flex justify-center items-center absolute799">
         <div className="bg-gray-500 w-2/4 rounded-lg">
           <div className="flex flex-col gap-4 mx-8">
           <h1 className="text-white text-3xl font-bold text-center">Task Info</h1>

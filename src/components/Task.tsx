@@ -2,13 +2,8 @@ import { useState } from "react";
 import { BsCheckCircle } from "react-icons/bs";
 import { ITask } from "../App";
 
-interface TaskProps {
-  title: string;
-  description: string;
-  due_date: string;
-}
 
-const Task: React.FC<TaskProps> = ({ title, description, due_date }) => {
+const Task: React.FC<ITask> = ({ title, description, due_date }) => {
   const [showComponent, setShowComponent] = useState(false);
   const [completed, setCompleted] = useState(false);
 
