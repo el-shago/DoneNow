@@ -2,13 +2,22 @@ import { useState } from "react";
 import { BsCheckCircle } from "react-icons/bs";
 import { ITask } from "../App";
 
-
-const Task: React.FC<ITask> = ({ title, description, due_date }) => {
+const Task: React.FC<ITask> = ({ task_id, title, description, due_date }) => {
   const [showComponent, setShowComponent] = useState(false);
   const [completed, setCompleted] = useState(false);
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     setCompleted(!completed);
+    
+    try{
+      await fetch(`http://localhost:3000/delete/task/${task_id}`, {
+        method: "DELETE",
+    });
+
+
+    } catch (error) {
+      console.log("Error at deleting task", error);
+    }
   };
   const formattedDueDate = new Date(due_date).toLocaleDateString();
   return (
