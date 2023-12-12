@@ -45,7 +45,7 @@ const createTask = app.post("/create/task", async (req, res) => {
 
     res.status(200).json({ tasks });
   } catch (error) {
-    console.error(error);
+    console.error("Error at creating task", error);
     res.status(500).json({ error: "Server error" });
   }
 });
