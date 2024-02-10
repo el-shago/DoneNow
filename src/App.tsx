@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import Task from "./components/Task.tsx";
 import CreateTask from "./components/CreateTask.tsx";
 import { Modal } from "flowbite-react";
+import { CiLogout } from "react-icons/ci";
 import './App.css'
 
 export interface ITask {
@@ -57,6 +58,13 @@ export default function App() {
             due_date={task.due_date}
           />
         ))}
+      </div>
+      <div className="flex justify-center items-end">
+        <button
+          className="flex flex-row bg-white hover:hover:bg-[#1ED947] hover:text-white transition-all duration-300 rounded-full p-2 md:p-4 items-center">
+          <CiLogout></CiLogout> 
+          Log Out
+        </button>
       </div>
     </div>
     

@@ -12,9 +12,9 @@ const Task: React.FC<ITask> = ({ task_id, title, description, due_date }) => {
     try{
       await fetch(`http://localhost:3000/delete/task/${task_id}`, {
         method: "DELETE",
+        
     });
-
-
+    
     } catch (error) {
       console.log("Error at deleting task", error);
     }

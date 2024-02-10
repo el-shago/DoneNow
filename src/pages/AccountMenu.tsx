@@ -1,14 +1,66 @@
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function AccountMenu() {
+  const navigate = useNavigate();
   const [variant, setVariant] = useState("login");
-  const login = () => {};
-  const register = () => {};
+  
+  const login = async () => {
+    try{
+      const response = await fetch("http://localhost:3000/login/user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    navigate("/dashboard")
+    
+    }
+
+    catch(error){
+      console.error("Error en el inicio de sesion:", error);
+    }
+  };
+
+  const register = async () => {
+  try {
+    const userData = {
+      username,  
+      email,
+      password,
+    };
+
+    const response = await fetch("http://localhost:3000/register/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+    
+  } catch (error) {
+    console.error("Error en el registro:", error);
+
+  }
+};
+
+
   const toggleVariant = useCallback(() => {
     setVariant((currentVariant) =>
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
 
   return (
     <div className="justify-center font-Lexend relative h-screen flex items-center bg-gradient-to-b from-green-400 to-black">
@@ -27,6 +79,7 @@ export function AccountMenu() {
                 style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
                 className="rounded-2xl text-white text-xl py-2 px-3 w-full placeholder-white placeholder-opacity-80"
                 placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
               />
             )}
             <input
@@ -35,6 +88,7 @@ export function AccountMenu() {
               style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
               className="rounded-2xl text-white text-xl py-2 px-3 w-full placeholder-white placeholder-opacity-80"
               placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               id="password"
@@ -42,6 +96,7 @@ export function AccountMenu() {
               style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
               className="rounded-2xl text-white text-xl py-2 px-3 w-full placeholder-white placeholder-opacity-80"
               placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
             />
 
             <p className="text-[#FFFFFF] text-opacity-50 mt-12">
