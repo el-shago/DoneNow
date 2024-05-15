@@ -1,17 +1,18 @@
 import { useState } from "react";
 
 export default function CreateTask() {
+  const [Userid, setUserid] = useState();
   const [Title, setTitle] = useState("");
   const [Description, setDescription] = useState("");
   const [Date, setDate] = useState("");
 
   const handleCreateTask = async (e: any) => {
     e.preventDefault();
-
     try {
       let res = await fetch("http://localhost:3000/create/task", {
         method: "POST",
         body: JSON.stringify({
+          userid: Userid,
           title: Title,
           description: Description,
           due_date: Date,
@@ -20,8 +21,10 @@ export default function CreateTask() {
           "Content-Type": "application/json",
         },
       });
+      
       let resJson = await res.json();
       if (res.status === 200) {
+        setUserid();
         setTitle("");
         setDescription("");
         setDate("");

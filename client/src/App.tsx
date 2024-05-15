@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
-import Task from "./components/Task.tsx";
-import CreateTask from "./components/CreateTask.tsx";
 import { Modal } from "flowbite-react";
+import { useContext, useEffect, useState } from "react";
+import { AiOutlinePlus } from "react-icons/ai";
 import { CiLogout } from "react-icons/ci";
-import './App.css'
+import './App.css';
+import CreateTask from "./components/CreateTask.tsx";
+import Task from "./components/Task.tsx";
 
 export interface ITask {
   task_id: number;
@@ -12,12 +12,13 @@ export interface ITask {
   description: string;
   due_date: string;
 }
+
 export default function App() {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [openModal, setOpenModal] = useState(false);
   
   const fetchTasks = async () => {
-    const response = await fetch("http://localhost:3000");
+    const response = await fetch("http://localhost:3000/");
     const data = await response.json();
     setTasks(data.tasks);
   };
@@ -25,8 +26,6 @@ export default function App() {
   useEffect(() => {
     fetchTasks();
   }, []);
-
-  
 
   return (
     <div className={`font-Lexend bg-custom min-h-screen min-w-full ${openModal ? 'brightness-50' : ''}`}>
@@ -62,7 +61,7 @@ export default function App() {
       <div className="flex justify-center items-end">
         <button
           className="flex flex-row bg-white hover:hover:bg-[#1ED947] hover:text-white transition-all duration-300 rounded-full p-2 md:p-4 items-center">
-          <CiLogout></CiLogout> 
+          <CiLogout></CiLogout>
           Log Out
         </button>
       </div>
