@@ -39,11 +39,11 @@ export default function App() {
         <div className="space-y-4 md:space-y-10">
           <h1 className="text-white text-3xl md:text-5xl">DoneNow</h1>
           <button
-            className="flex flex-row bg-white rounded-full p-2 md:p-4 items-center"
+            className="flex flex-row bg-white rounded-full p-2 md:p-4 items-center hover:hover:bg-[#1ED947] hover:text-white transition-all duration-300"
             onClick={() => setOpenModal(true)}
           >
             <AiOutlinePlus className="flex flex-row items-center" />
-            <span className="hidden md:block">Create task</span>
+            <span className="hidden md:block ">Create task</span>
           </button>
         </div>
         <h2 className="text-white text-lg md:text-2xl">Welcome back Shago!</h2>
